@@ -44,7 +44,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     // Core 초기화
-    if (FAILED(CCore::GetInst()->init(g_hWnd, POINT{1200, 800})))
+    if (FAILED(CCore::GetInst()->init(g_hWnd, POINT{1280, 768})))
     {
         // 초기화 실패시
         MessageBox(g_hWnd, L"ERROR : 초기화 실패!!!", L"ERROR", MB_OK | MB_ICONERROR);
@@ -149,12 +149,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    static int x1 = 10;
-    static int y1 = 10;
-    int width = 100;
-    int height = 100;
-    int speed = 10;
-
     switch (message)
     {
     case WM_COMMAND:
@@ -178,29 +172,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            Rectangle(hdc, x1, y1, x1 + width, y1 + height);
             EndPaint(hWnd, &ps);
-        }
-        break;
-    case WM_KEYDOWN:
-        switch (wParam)
-        {
-        case 'W':
-            y1 -= speed;
-            InvalidateRect(hWnd, nullptr, true);
-            break;
-        case 'S':
-            y1 += speed;
-            InvalidateRect(hWnd, nullptr, true);
-            break;
-        case 'A':
-            x1 -= speed;
-            InvalidateRect(hWnd, nullptr, true);
-            break;
-        case 'D':
-            x1 += speed;
-            InvalidateRect(hWnd, nullptr, true);
-            break;
         }
         break;
     case WM_DESTROY:

@@ -17,6 +17,18 @@
     <Filter Include="Engine\01 Header">
       <UniqueIdentifier>{4ef3f809-d0c6-457e-8950-253f49dc588a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03 Manager">
+      <UniqueIdentifier>{3b5cf23a-fa99-4285-8448-9c0b3be1518f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04 Obejct">
+      <UniqueIdentifier>{6b4c37a1-729e-4d65-a1af-e43e4ada317b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Manager\KeyMgr">
+      <UniqueIdentifier>{b2809664-077e-4c3c-9314-a2f9ebb44209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Manager\TimeMgr">
+      <UniqueIdentifier>{5320dbf5-cdc5-47ed-90d2-f76d2ca59dad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -38,11 +50,32 @@
     <ClInclude Include="define.h">
       <Filter>Engine\01 Header</Filter>
     </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>Engine\01 Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject.h">
+      <Filter>Engine\04 Obejct</Filter>
+    </ClInclude>
+    <ClInclude Include="CKeyManager.h">
+      <Filter>Engine\03 Manager\KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeManager.h">
+      <Filter>Engine\03 Manager\TimeMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CCore.cpp">
       <Filter>Engine\02 Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject.cpp">
+      <Filter>Engine\04 Obejct</Filter>
+    </ClCompile>
+    <ClCompile Include="CKeyManager.cpp">
+      <Filter>Engine\03 Manager\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeManager.cpp">
+      <Filter>Engine\03 Manager\TimeMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
