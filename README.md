@@ -1,5 +1,7 @@
 # 진로 프로젝트
 
+[스케줄](https://github.com/StupidDeveloper05/WindowsProject1/blob/master/SCHEDULE.md)
+
 ## Core 클래스
 + ### 용도
     + ### 메인 윈도우에서 초기화 및 무한 루프에서 업데이트를 시켜줌.
