@@ -3,10 +3,7 @@
 
 #include "CTimeManager.h"
 #include "CKeyManager.h"
-
-#include "CObject.h"
-
-CObject g_Obj;
+#include "CSceneManager.h"
 
 CCore::CCore()
 	: m_hWnd(nullptr)
@@ -40,13 +37,10 @@ BOOL CCore::init(HWND _hWnd, POINT _ptResolution)
 	HBITMAP hOldBit = (HBITMAP)SelectObject(m_memDC, m_hBit);
 	DeleteObject(hOldBit);
 
-	// Test Object
-	g_Obj.SetPos(Vec2(640, 384));
-	g_Obj.SetScale(Vec2(100.f, 100.f));
-
 	// Manager init
 	CTimeManager::GetInst()->init();
 	CKeyManager::GetInst()->init();
+	CSceneManager::GetInst()->init();
 
 	return S_OK;
 }
@@ -56,15 +50,13 @@ void CCore::progress()
 	// Manager 업데이트
 	CTimeManager::GetInst()->update();
 	CKeyManager::GetInst()->update();
+	CSceneManager::GetInst()->update();
 
-	// Object update
-	g_Obj.update();
 
 	// 화면 클리어
 	Rectangle(m_memDC, -1, -1, m_ptResolution.x + 1, m_ptResolution.y + 1);
 
-	// 그리기 코드
-	g_Obj.render(m_memDC);
+	CSceneManager::GetInst()->render(m_memDC);
 
 	// 화면에 복사
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_memDC, 0, 0, SRCCOPY);

@@ -6,6 +6,19 @@ struct Vec2
 	float y;
 
 public:
+	float Length()
+	{
+		return sqrt(x * x + y * y);
+	}
+
+	Vec2& Nomalize()
+	{
+		x /= Length();
+		y /= Length();
+		return *this;
+	}
+
+public:
 	Vec2& operator=(POINT _pt) // Equal 연산자 포인트 자료형과
 	{
 		x = (float)_pt.y;

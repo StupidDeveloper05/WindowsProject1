@@ -19,3 +19,26 @@
 
 #define DT CTimeManager::GetInst()->GetDT();
 #define fDT CTimeManager::GetInst()->GetfDT();
+
+#define PI 3.1415926535
+
+enum class SCENE_TYPE
+{
+	START,
+	TOOL,
+	STAGE1,
+	STAGE2,
+
+	END
+};
+
+enum class GROUP_TYPE
+{
+	DEFAULT,
+	PLAYER,
+	MONSTER,
+	PLAYER_MISSILE,
+	MONSTER_MISSILE,
+
+	END = 32
+};
