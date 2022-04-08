@@ -7,6 +7,9 @@
 #include "CScene.h"
 #include "CSceneManager.h"
 
+#include "CTexture.h"
+#include "CResManager.h"
+
 CMonster::CMonster()
 	: m_fSpeed(300.f)
 	, m_fDistance(300.f)
@@ -14,7 +17,9 @@ CMonster::CMonster()
 	, m_iDirection(1)
 	, m_fAccTime(0.0f)
 	, m_fCycleTime(2.0f)
+	, m_pTex(nullptr)
 {
+	m_pTex = CResManager::GetInst()->LoadTexture(L"Monster", L"texture\\monster.bmp");
 }
 
 CMonster::~CMonster()
@@ -45,6 +50,23 @@ void CMonster::update()
 		CreateMissile();
 	}
 	SetPos(vPos);
+}
+
+void CMonster::render(HDC _dc)
+{
+	Vec2 vPos = GetPos();
+
+	TransparentBlt(_dc
+		, (int)(vPos.x - m_pTex->Width() / 2.f)
+		, (int)(vPos.y - m_pTex->Height() / 2.f)
+		, m_pTex->Width() * 0.85
+		, m_pTex->Height() * 0.85
+		, m_pTex->GetDC()
+		, 0, 0
+		, m_pTex->Width()
+		, m_pTex->Height()
+		, RGB(255, 0, 255)
+	);
 }
 
 void CMonster::CreateMissile()

@@ -4,6 +4,7 @@
 #include "CTimeManager.h"
 #include "CKeyManager.h"
 #include "CSceneManager.h"
+#include "CPathManager.h"
 
 CCore::CCore()
 	: m_hWnd(nullptr)
@@ -38,6 +39,7 @@ BOOL CCore::init(HWND _hWnd, POINT _ptResolution)
 	DeleteObject(hOldBit);
 
 	// Manager init
+	CPathManager::GetInst()->init();
 	CTimeManager::GetInst()->init();
 	CKeyManager::GetInst()->init();
 	CSceneManager::GetInst()->init();

@@ -1,5 +1,7 @@
 #pragma once
 
+class CTexture;
+
 class CObject
 {
 private:

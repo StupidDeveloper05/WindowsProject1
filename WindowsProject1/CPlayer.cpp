@@ -9,9 +9,14 @@
 #include "CScene.h"
 #include "CSceneManager.h"
 
+#include "CTexture.h"
+#include "CResManager.h"
+
 CPlayer::CPlayer()
 	: m_fSpeed(300.f)
+	, m_pTex(nullptr)
 {
+	m_pTex = CResManager::GetInst()->LoadTexture(L"Player", L"texture\\player.bmp");
 }
 
 CPlayer::~CPlayer()
@@ -47,6 +52,23 @@ void CPlayer::update()
 	SetPos(vPos);
 }
 
+void CPlayer::render(HDC _dc)
+{
+	Vec2 vPos = GetPos();
+
+	TransparentBlt(_dc
+		, (int)(vPos.x - m_pTex->Width() / 2.f)
+		, (int)(vPos.y - m_pTex->Height() / 2.f)
+		, m_pTex->Width()
+		, m_pTex->Height()
+		, m_pTex->GetDC()
+		, 0, 0
+		, m_pTex->Width()
+		, m_pTex->Height()
+		, RGB(255, 0, 255)
+		);
+}
+
 void CPlayer::CreateMissile()
 {
 	Vec2 vPos = GetPos();
@@ -55,6 +77,7 @@ void CPlayer::CreateMissile()
 
 	pMissile->SetPos(Vec2(vPos));
 	pMissile->SetScale(Vec2(25.f, 25.f));
+	pMissile->SetTexture(L"Player Fire", L"texture\\playerfire.bmp");
 
 	CSceneManager::GetInst()->GetCurScene()->AddObject(pMissile, GROUP_TYPE::PLAYER_MISSILE);
 }

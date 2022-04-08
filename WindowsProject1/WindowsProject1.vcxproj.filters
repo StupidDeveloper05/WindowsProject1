@@ -47,6 +47,18 @@
     <Filter Include="Engine\04 Obejct\Missile">
       <UniqueIdentifier>{c8b82780-bde9-4a20-b428-0cf1a52766a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\06 Resource">
+      <UniqueIdentifier>{554005f6-f1ae-4e70-9c96-a727982b45eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Manager\PathMgr">
+      <UniqueIdentifier>{caac790d-053f-4845-8315-251f58187180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06 Resource\Texture">
+      <UniqueIdentifier>{3f2d0cca-2584-44f0-b661-86fa44d623fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Manager\ResMgr">
+      <UniqueIdentifier>{571b0d3e-88b2-446e-aff0-f40a68546d67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -98,6 +110,18 @@
     <ClInclude Include="CMissile.h">
       <Filter>Engine\04 Obejct\Missile</Filter>
     </ClInclude>
+    <ClInclude Include="CPathManager.h">
+      <Filter>Engine\03 Manager\PathMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CRes.h">
+      <Filter>Engine\06 Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="CTexture.h">
+      <Filter>Engine\06 Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="CResManager.h">
+      <Filter>Engine\03 Manager\ResMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -130,6 +154,18 @@
     </ClCompile>
     <ClCompile Include="CMissile.cpp">
       <Filter>Engine\04 Obejct\Missile</Filter>
+    </ClCompile>
+    <ClCompile Include="CPathManager.cpp">
+      <Filter>Engine\03 Manager\PathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CRes.cpp">
+      <Filter>Engine\06 Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="CTexture.cpp">
+      <Filter>Engine\06 Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="CResManager.cpp">
+      <Filter>Engine\03 Manager\ResMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

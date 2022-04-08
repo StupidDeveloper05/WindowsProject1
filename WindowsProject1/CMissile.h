@@ -1,6 +1,8 @@
 #pragma once
 #include "CObject.h"
 
+class CTexture;
+
 class CMissile :
     public CObject
 {
@@ -8,6 +10,11 @@ private:
     float   m_fSpeed;
     float   m_fTheta;
     Vec2    m_vDir;
+
+    CTexture* m_pTex;
+
+private:
+    void SetTexture(const wstring& _strKey, const wstring& _strPath);
 
 public:
     void SetSpeed(float _fSpeed) { m_fSpeed = _fSpeed; }
@@ -25,4 +32,7 @@ public:
 public:
     CMissile();
     ~CMissile();
+
+    friend class CPlayer;
+    friend class CMonster;
 };

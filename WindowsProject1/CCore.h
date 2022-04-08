@@ -17,5 +17,6 @@ public:
 	void progress();
 
 	HWND GetHandle() { return m_hWnd; }
+	HDC GetMainDC() { return m_hDC; }
 };
 
