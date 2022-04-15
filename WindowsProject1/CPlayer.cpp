@@ -12,11 +12,18 @@
 #include "CTexture.h"
 #include "CResManager.h"
 
+#include "CCollider.h"
+
 CPlayer::CPlayer()
 	: m_fSpeed(300.f)
 	, m_pTex(nullptr)
 {
 	m_pTex = CResManager::GetInst()->LoadTexture(L"Player", L"texture\\player.bmp");
+	
+	CreateCollider();
+	GetCollider()->SetOffsetPos(Vec2(0.f, 0.f));
+	GetCollider()->SetScale(Vec2(m_pTex->Width(), m_pTex->Height()));
+
 }
 
 CPlayer::~CPlayer()
@@ -50,6 +57,8 @@ void CPlayer::update()
 	}
 
 	SetPos(vPos);
+
+	finalupdate();
 }
 
 void CPlayer::render(HDC _dc)
@@ -67,6 +76,23 @@ void CPlayer::render(HDC _dc)
 		, m_pTex->Height()
 		, RGB(255, 0, 255)
 		);
+
+	component_render(_dc);
+}
+
+void CPlayer::OnCollisionEnter(CCollider* _pOther)
+{
+
+}
+
+void CPlayer::OnCollision(CCollider* _pOther)
+{
+
+}
+
+void CPlayer::OnCollisionExit(CCollider* _pOther)
+{
+
 }
 
 void CPlayer::CreateMissile()

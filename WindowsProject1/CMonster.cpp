@@ -10,6 +10,8 @@
 #include "CTexture.h"
 #include "CResManager.h"
 
+#include "CCollider.h"
+
 CMonster::CMonster()
 	: m_fSpeed(300.f)
 	, m_fDistance(300.f)
@@ -20,6 +22,9 @@ CMonster::CMonster()
 	, m_pTex(nullptr)
 {
 	m_pTex = CResManager::GetInst()->LoadTexture(L"Monster", L"texture\\monster.bmp");
+	CreateCollider();
+	GetCollider()->SetOffsetPos(Vec2(-20.f, 0.f));
+	GetCollider()->SetScale(Vec2(50, 50));
 }
 
 CMonster::~CMonster()
@@ -50,6 +55,8 @@ void CMonster::update()
 		CreateMissile();
 	}
 	SetPos(vPos);
+
+	finalupdate();
 }
 
 void CMonster::render(HDC _dc)
@@ -67,6 +74,8 @@ void CMonster::render(HDC _dc)
 		, m_pTex->Height()
 		, RGB(255, 0, 255)
 	);
+
+	component_render(_dc);
 }
 
 void CMonster::CreateMissile()

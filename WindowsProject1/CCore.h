@@ -1,5 +1,4 @@
 #pragma once
-#include <thread>
 
 class CCore
 {
@@ -12,11 +11,20 @@ private:
 	HDC		m_memDC; // memory DC
 	HBITMAP	m_hBit;	// DC의 Bitmap
 
+	// 자주 사용할 gdi 리스트
+	HPEN		m_arrPen[(UINT)PEN_TYPE::END];
+	HBRUSH	m_arrBrush[(UINT)BRUSH_TYPE::END];
+
 public:
 	BOOL init(HWND _hWnd, POINT _ptResolution);
 	void progress();
+	void CreateGDI();
 
 	HWND GetHandle() { return m_hWnd; }
 	HDC GetMainDC() { return m_hDC; }
+
+	HPEN GetPen(PEN_TYPE _ePen) { return m_arrPen[(UINT)_ePen]; }
+	HBRUSH GetBrush(BRUSH_TYPE _eBrush) { return m_arrBrush[(UINT)_eBrush]; }
+
 };
 

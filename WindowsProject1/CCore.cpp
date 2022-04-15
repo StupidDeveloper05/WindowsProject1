@@ -5,6 +5,7 @@
 #include "CKeyManager.h"
 #include "CSceneManager.h"
 #include "CPathManager.h"
+#include "CCollisionManager.h"
 
 CCore::CCore()
 	: m_hWnd(nullptr)
@@ -18,6 +19,11 @@ CCore::~CCore()
 	ReleaseDC(m_hWnd, m_hDC);
 	DeleteDC(m_memDC);
 	DeleteObject(m_hBit);
+
+	for (UINT i = 0; i < (UINT)PEN_TYPE::END; ++i)
+	{
+		DeleteObject(m_arrPen[i]);
+	}
 }
 
 BOOL CCore::init(HWND _hWnd, POINT _ptResolution)
@@ -38,6 +44,9 @@ BOOL CCore::init(HWND _hWnd, POINT _ptResolution)
 	HBITMAP hOldBit = (HBITMAP)SelectObject(m_memDC, m_hBit);
 	DeleteObject(hOldBit);
 
+	// 자주 사용되는 GDI 생성
+	CreateGDI();
+	
 	// Manager init
 	CPathManager::GetInst()->init();
 	CTimeManager::GetInst()->init();
@@ -53,6 +62,7 @@ void CCore::progress()
 	CTimeManager::GetInst()->update();
 	CKeyManager::GetInst()->update();
 	CSceneManager::GetInst()->update();
+	CCollisionManager::GetInst()->update();
 
 
 	// 화면 클리어
@@ -62,4 +72,13 @@ void CCore::progress()
 
 	// 화면에 복사
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_memDC, 0, 0, SRCCOPY);
+}
+
+void CCore::CreateGDI()
+{
+	m_arrPen[(UINT)PEN_TYPE::RED] = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+	m_arrPen[(UINT)PEN_TYPE::GREEN] = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+	m_arrPen[(UINT)PEN_TYPE::BLUE] = CreatePen(PS_SOLID, 1, RGB(0, 0, 255));
+
+	m_arrBrush[(UINT)BRUSH_TYPE::HOLLOW] = (HBRUSH)GetStockObject(HOLLOW_BRUSH);
 }

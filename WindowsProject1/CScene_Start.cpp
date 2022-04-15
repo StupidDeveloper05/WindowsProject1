@@ -4,6 +4,8 @@
 #include "CPlayer.h"
 #include "CMonster.h"
 
+#include "CCollisionManager.h"
+
 CScene_Start::CScene_Start()
 {
 }
@@ -27,6 +29,8 @@ void CScene_Start::Enter()
 	pMon->SetCenter(pMon->GetPos());
 
 	AddObject(pMon, GROUP_TYPE::MONSTER);
+
+	CCollisionManager::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 }
 
 void CScene_Start::Exit()

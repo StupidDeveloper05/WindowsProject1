@@ -59,6 +59,18 @@
     <Filter Include="Engine\03 Manager\ResMgr">
       <UniqueIdentifier>{571b0d3e-88b2-446e-aff0-f40a68546d67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\07 Component">
+      <UniqueIdentifier>{8691ddc1-077b-4d9c-84b4-c5bb3e6e0aca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07 Component\Collider">
+      <UniqueIdentifier>{334cc998-fa59-4fad-ad50-91fe277ba05d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08 Module">
+      <UniqueIdentifier>{cd2b26ee-5a3a-4faf-9c16-d14916f9054b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03 Manager\CollisionMgr">
+      <UniqueIdentifier>{4cb10447-ed22-4c3a-8291-bd6c7485c771}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -122,6 +134,15 @@
     <ClInclude Include="CResManager.h">
       <Filter>Engine\03 Manager\ResMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Engine\07 Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectGDI.h">
+      <Filter>Engine\08 Module</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollisionManager.h">
+      <Filter>Engine\03 Manager\CollisionMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -166,6 +187,15 @@
     </ClCompile>
     <ClCompile Include="CResManager.cpp">
       <Filter>Engine\03 Manager\ResMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Engine\07 Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectGDI.cpp">
+      <Filter>Engine\08 Module</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollisionManager.cpp">
+      <Filter>Engine\03 Manager\CollisionMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

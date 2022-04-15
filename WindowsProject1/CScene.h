@@ -24,6 +24,7 @@ public:
 	{ 
 		m_arrObj[(UINT)_eGroup].push_back(_pObj); 
 	}
+	vector<CObject*>& GetGroupObject(GROUP_TYPE _eGroup) { return m_arrObj[(UINT)_eGroup]; }
 	
 public:
 	CScene();
