@@ -43,6 +43,15 @@ enum class GROUP_TYPE
 	END = 32
 };
 
+enum class EVENT_TYPE
+{
+	CREATE_OBJECT,
+	DELETE_OBJECT,
+	SCENE_CHANGE,
+
+	END
+};
+
 enum class PEN_TYPE
 {
 	RED,

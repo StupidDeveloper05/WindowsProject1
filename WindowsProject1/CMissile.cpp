@@ -6,6 +6,8 @@
 #include "CTexture.h"
 #include "CResManager.h"
 
+#include "CCollider.h"
+
 CMissile::CMissile()
 	: m_fSpeed(600.f)
 	, m_fTheta(PI / 4 * 3) // 135µµ 
@@ -14,6 +16,9 @@ CMissile::CMissile()
 {
 	m_vDir.Nomalize();
 	m_pTex = CResManager::GetInst()->LoadTexture(L"Monster Fire", L"texture\\monsterfire.bmp");
+
+	CreateCollider();
+	GetCollider()->SetScale(Vec2(20, 20));
 }
 
 CMissile::~CMissile()
@@ -31,6 +36,8 @@ void CMissile::update()
 	vPos.y += m_vDir.y * m_fSpeed * fDT;
 
 	SetPos(vPos);
+
+	finalupdate();
 }
 
 void CMissile::render(HDC _dc)
@@ -48,6 +55,8 @@ void CMissile::render(HDC _dc)
 		, m_pTex->Height()
 		, RGB(255, 0, 255)
 	);
+
+	component_render(_dc);
 }
 
 void CMissile::SetTexture(const wstring& _strKey, const wstring& _strPath)

@@ -24,6 +24,11 @@ public:
     void SetCycleTime(float _fCycleTIme) { m_fCycleTime = _fCycleTIme; }
 
 public:
+    virtual void OnCollisionEnter(CCollider* _pOther);
+    virtual void OnCollision(CCollider* _pOther);
+    virtual void OnCollisionExit(CCollider* _pOther);
+
+public:
     virtual void update() override;
     virtual void render(HDC _dc) override;
 

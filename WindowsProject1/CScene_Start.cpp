@@ -20,7 +20,8 @@ void CScene_Start::Enter()
 	pObj->SetPos(Vec2(640, 384));
 	pObj->SetScale(Vec2(100.f, 100.f));
 
-	AddObject(pObj, GROUP_TYPE::PLAYER);
+	CreateObject(pObj, GROUP_TYPE::PLAYER);
+	//AddObject(pObj, GROUP_TYPE::PLAYER);
 
 	CMonster* pMon = new CMonster;
 	pMon->SetPos(Vec2(640, 100));
@@ -28,9 +29,11 @@ void CScene_Start::Enter()
 	pMon->SetCycleTime(0.5f);
 	pMon->SetCenter(pMon->GetPos());
 
-	AddObject(pMon, GROUP_TYPE::MONSTER);
+	CreateObject(pMon, GROUP_TYPE::MONSTER);
 
 	CCollisionManager::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
+	CCollisionManager::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER_MISSILE);
+	CCollisionManager::GetInst()->CheckGroup(GROUP_TYPE::PLAYER_MISSILE, GROUP_TYPE::MONSTER);
 }
 
 void CScene_Start::Exit()

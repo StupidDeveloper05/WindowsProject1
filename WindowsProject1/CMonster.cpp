@@ -23,8 +23,8 @@ CMonster::CMonster()
 {
 	m_pTex = CResManager::GetInst()->LoadTexture(L"Monster", L"texture\\monster.bmp");
 	CreateCollider();
-	GetCollider()->SetOffsetPos(Vec2(-20.f, 0.f));
-	GetCollider()->SetScale(Vec2(50, 50));
+	GetCollider()->SetOffsetPos(Vec2(-16.f, 0.f));
+	GetCollider()->SetScale(Vec2(30, 50));
 }
 
 CMonster::~CMonster()
@@ -89,6 +89,23 @@ void CMonster::CreateMissile()
 	pMissile->SetScale(Vec2(25.f, 25.f));
 	pMissile->SetSpeed(500.f);
 	pMissile->SetDir(Vec2(0, 1));
+	pMissile->GetCollider()->SetOffsetPos(Vec2(-4.f, 13.f));
 
-	CSceneManager::GetInst()->GetCurScene()->AddObject(pMissile, GROUP_TYPE::MONSTER_MISSILE);
+	CreateObject(pMissile, GROUP_TYPE::MONSTER_MISSILE);
+}
+
+
+void CMonster::OnCollisionEnter(CCollider* _pOther)
+{
+
+}
+
+void CMonster::OnCollision(CCollider* _pOther)
+{
+
+}
+
+void CMonster::OnCollisionExit(CCollider* _pOther)
+{
+
 }

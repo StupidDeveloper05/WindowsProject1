@@ -21,8 +21,8 @@ CPlayer::CPlayer()
 	m_pTex = CResManager::GetInst()->LoadTexture(L"Player", L"texture\\player.bmp");
 	
 	CreateCollider();
-	GetCollider()->SetOffsetPos(Vec2(0.f, 0.f));
-	GetCollider()->SetScale(Vec2(m_pTex->Width(), m_pTex->Height()));
+	GetCollider()->SetOffsetPos(Vec2(-2.f, 2.f));
+	GetCollider()->SetScale(Vec2(35, 50));
 
 }
 
@@ -80,6 +80,20 @@ void CPlayer::render(HDC _dc)
 	component_render(_dc);
 }
 
+void CPlayer::CreateMissile()
+{
+	Vec2 vPos = GetPos();
+
+	CMissile* pMissile = new CMissile;
+
+	pMissile->SetPos(Vec2(vPos));
+	pMissile->SetScale(Vec2(25.f, 25.f));
+	pMissile->SetTexture(L"Player Fire", L"texture\\playerfire.bmp");
+	pMissile->GetCollider()->SetOffsetPos(Vec2(-2.f, -23.f));
+
+	CreateObject(pMissile, GROUP_TYPE::PLAYER_MISSILE);
+}
+
 void CPlayer::OnCollisionEnter(CCollider* _pOther)
 {
 
@@ -93,17 +107,4 @@ void CPlayer::OnCollision(CCollider* _pOther)
 void CPlayer::OnCollisionExit(CCollider* _pOther)
 {
 
-}
-
-void CPlayer::CreateMissile()
-{
-	Vec2 vPos = GetPos();
-
-	CMissile* pMissile = new CMissile;
-
-	pMissile->SetPos(Vec2(vPos));
-	pMissile->SetScale(Vec2(25.f, 25.f));
-	pMissile->SetTexture(L"Player Fire", L"texture\\playerfire.bmp");
-
-	CSceneManager::GetInst()->GetCurScene()->AddObject(pMissile, GROUP_TYPE::PLAYER_MISSILE);
 }

@@ -6,6 +6,7 @@
 #include "CSceneManager.h"
 #include "CPathManager.h"
 #include "CCollisionManager.h"
+#include "CEventManager.h"
 
 CCore::CCore()
 	: m_hWnd(nullptr)
@@ -72,6 +73,9 @@ void CCore::progress()
 
 	// 화면에 복사
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y, m_memDC, 0, 0, SRCCOPY);
+
+	// Event Manager
+	CEventManager::GetInst()->update();
 }
 
 void CCore::CreateGDI()

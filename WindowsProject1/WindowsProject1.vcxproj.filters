@@ -71,6 +71,9 @@
     <Filter Include="Engine\03 Manager\CollisionMgr">
       <UniqueIdentifier>{4cb10447-ed22-4c3a-8291-bd6c7485c771}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03 Manager\EventMgr">
+      <UniqueIdentifier>{d2acb395-030b-4039-975a-12e9b9dddaa1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -143,6 +146,12 @@
     <ClInclude Include="CCollisionManager.h">
       <Filter>Engine\03 Manager\CollisionMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CEventManager.h">
+      <Filter>Engine\03 Manager\EventMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>Engine\01 Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -196,6 +205,12 @@
     </ClCompile>
     <ClCompile Include="CCollisionManager.cpp">
       <Filter>Engine\03 Manager\CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CEventManager.cpp">
+      <Filter>Engine\03 Manager\EventMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="func.cpp">
+      <Filter>Engine\01 Header</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
