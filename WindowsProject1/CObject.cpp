@@ -10,6 +10,8 @@ CObject::CObject()
 	: m_vPos(Vec2(0.f, 0.f))
 	, m_vScale(Vec2(100.f, 100.f))
 	, m_pCollider(nullptr)
+	, m_bAlive(true)
+	, m_strName(L"")
 {
 }
 

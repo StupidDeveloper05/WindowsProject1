@@ -13,6 +13,8 @@ CMissile::CMissile()
 	, m_fTheta(PI / 4 * 3) // 135µµ 
 	, m_vDir(Vec2(0, -1))
 	, m_pTex(nullptr)
+	, m_fMaxDist(100.f)
+	, m_vFirst{}
 {
 	m_vDir.Nomalize();
 	m_pTex = CResManager::GetInst()->LoadTexture(L"Monster Fire", L"texture\\monsterfire.bmp");
@@ -36,6 +38,11 @@ void CMissile::update()
 	vPos.y += m_vDir.y * m_fSpeed * fDT;
 
 	SetPos(vPos);
+
+	if (m_fMaxDist <= (vPos - m_vFirst).Length())
+	{
+		DeleteObject(this);
+	}
 
 	finalupdate();
 }
@@ -62,4 +69,23 @@ void CMissile::render(HDC _dc)
 void CMissile::SetTexture(const wstring& _strKey, const wstring& _strPath)
 {
 	m_pTex = CResManager::GetInst()->LoadTexture(_strKey, _strPath);
+}
+
+void CMissile::OnCollisionEnter(CCollider* _pOther)
+{
+	if (_pOther->GetObj()->GetName() == L"monster")
+	{
+		if (GetName() == L"player missile")
+		{
+			DeleteObject(this);
+		}
+	}
+}
+
+void CMissile::OnCollision(CCollider* _pOther)
+{
+}
+
+void CMissile::OnCollisionExit(CCollider* _pOther)
+{
 }

@@ -20,6 +20,7 @@ CMonster::CMonster()
 	, m_fAccTime(0.0f)
 	, m_fCycleTime(2.0f)
 	, m_pTex(nullptr)
+	, m_hp(5)
 {
 	m_pTex = CResManager::GetInst()->LoadTexture(L"Monster", L"texture\\monster.bmp");
 	CreateCollider();
@@ -90,6 +91,9 @@ void CMonster::CreateMissile()
 	pMissile->SetSpeed(500.f);
 	pMissile->SetDir(Vec2(0, 1));
 	pMissile->GetCollider()->SetOffsetPos(Vec2(-4.f, 13.f));
+	pMissile->SetName(L"monster missile");
+	pMissile->SetFirstPos(pMissile->GetPos());
+	pMissile->SetDist(500.f);
 
 	CreateObject(pMissile, GROUP_TYPE::MONSTER_MISSILE);
 }
@@ -97,6 +101,14 @@ void CMonster::CreateMissile()
 
 void CMonster::OnCollisionEnter(CCollider* _pOther)
 {
+	if (_pOther->GetObj()->GetName() == L"player missile")
+	{
+		m_hp -= 1;
+		if (m_hp <= 0)
+		{
+			DeleteObject(this);
+		}
+	}
 
 }
 

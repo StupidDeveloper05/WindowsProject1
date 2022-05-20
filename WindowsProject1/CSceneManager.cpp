@@ -43,3 +43,12 @@ void CSceneManager::render(HDC _dc)
 	if (nullptr != m_pCurScene)
 		m_pCurScene->render(_dc);
 }
+
+void CSceneManager::ChangeScene(SCENE_TYPE _eType)
+{
+	m_pCurScene->Exit();
+
+	m_pCurScene = m_arrScene[(UINT)_eType];
+
+	m_pCurScene->Enter();
+}

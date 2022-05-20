@@ -17,6 +17,8 @@
 CPlayer::CPlayer()
 	: m_fSpeed(300.f)
 	, m_pTex(nullptr)
+	, m_fDelay(0.3f)
+	, m_fCurrentDelay(0.f)
 {
 	m_pTex = CResManager::GetInst()->LoadTexture(L"Player", L"texture\\player.bmp");
 	
@@ -51,9 +53,19 @@ void CPlayer::update()
 		vPos.x += m_fSpeed * fDT;
 	}
 
+	m_fCurrentDelay += fDT;
+	if (m_fCurrentDelay >= m_fDelay)
+	{
+		m_fCurrentDelay = m_fDelay;
+	}
+
 	if (KEY_TAP(KEY::SPACE))
 	{
-		CreateMissile();
+		if (m_fCurrentDelay >= m_fDelay)
+		{
+			m_fCurrentDelay = m_fDelay - m_fCurrentDelay;
+			CreateMissile();
+		}
 	}
 
 	SetPos(vPos);
@@ -90,6 +102,9 @@ void CPlayer::CreateMissile()
 	pMissile->SetScale(Vec2(25.f, 25.f));
 	pMissile->SetTexture(L"Player Fire", L"texture\\playerfire.bmp");
 	pMissile->GetCollider()->SetOffsetPos(Vec2(-2.f, -23.f));
+	pMissile->SetName(L"player missile");
+	pMissile->SetFirstPos(pMissile->GetPos());
+	pMissile->SetDist(400.f);
 
 	CreateObject(pMissile, GROUP_TYPE::PLAYER_MISSILE);
 }

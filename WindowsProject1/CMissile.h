@@ -13,6 +13,9 @@ private:
 
     CTexture* m_pTex;
 
+    float   m_fMaxDist;
+    Vec2    m_vFirst;
+
 private:
     void SetTexture(const wstring& _strKey, const wstring& _strPath);
 
@@ -24,6 +27,13 @@ public:
         m_vDir = _vDir;
         m_vDir.Nomalize();
     }
+    void SetDist(float _dist) { m_fMaxDist = _dist; }
+    void SetFirstPos(Vec2 _vPos) { m_vFirst = _vPos; }
+
+public:
+    virtual void OnCollisionEnter(CCollider* _pOther);
+    virtual void OnCollision(CCollider* _pOther);
+    virtual void OnCollisionExit(CCollider* _pOther);
 
 public:
     virtual void update() override;

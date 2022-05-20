@@ -7,8 +7,10 @@ class CPlayer :
     public CObject
 {
 private:
-    float m_fSpeed;
-    CTexture* m_pTex;
+    float       m_fSpeed;
+    CTexture*   m_pTex;
+    float       m_fDelay;
+    float       m_fCurrentDelay;
 
 public:
     virtual void update() override;
